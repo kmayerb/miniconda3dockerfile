@@ -21,6 +21,10 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
 
+RUN apt-get update && apt-get install -y build-essential && apt-get install -y procps && apt-get install -y nano && apt-get -y install gcc && apt-get -y install unzip
+
+RUN pip install --upgrade pip
+
 ENV TINI_VERSION v0.16.1
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
